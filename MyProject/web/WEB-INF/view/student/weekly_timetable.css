@@ -6,4 +6,29 @@ Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this t
     Created on : Oct 13, 2022, 8:34:06 PM
     Author     : admin
 */
+.time{
+    background-color: rgb(93, 121, 205);
+}
+a{
+    text-decoration: none;
+}
+
+.material{
+    background-color: orange;
+    color: white;
+}
+
+.time-slot{
+    display: inline;
+    background-color: green;
+    color: white;
+}
+
+.attended{
+    color: green;
+}
+
+.not_yet{
+    color: red;
+}
 
