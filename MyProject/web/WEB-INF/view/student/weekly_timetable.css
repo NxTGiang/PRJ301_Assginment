@@ -6,6 +6,15 @@ Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this t
     Created on : Oct 13, 2022, 8:34:06 PM
     Author     : admin
 */
+
+body {
+    margin-left: 200px;
+}
+
+h1{
+    margin-left: 20px;
+    font-weight: 100;
+}
 .time{
     background-color: rgb(93, 121, 205);
 }
@@ -16,12 +25,20 @@ a{
 .material{
     background-color: orange;
     color: white;
+    font-size: x-small;
+    font-weight: bolder;
+    padding: 3px 5px;
+    border-radius: 0.2rem;
 }
 
 .time-slot{
     display: inline;
-    background-color: green;
+    background-color: rgba(77, 158, 77, 0.9);
     color: white;
+    font-size: x-small;
+    padding: 3px 5px;
+    border-radius: 0.2rem;
+    font-weight: bolder;
 }
 
 .attended{
@@ -36,5 +53,17 @@ a{
 
 .parentheses{
     color: rgb(93, 121, 205);
+}
+
+.subject{
+    color: rgb(93, 121, 205);
+}
+
+p{
+    margin: 0;
+}
+
+.header{
+    padding: 0px 20px 0px 0px;
 }
 
