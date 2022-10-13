@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit this template
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="weekly_timetable.css"/>
+    </head>
+    <body>
+        <div class="search">
+            <div>Campus:<select>
+                <option>FU-HL</option>
+                <option>FU-HCM</option>
+                <option>FU-DN</option>
+                <option>FU-CT</option>
+                <option>FU-QN</option>
+                </select>
+            </div>
+            <div>
+                Lecture:<input type="text" /><input type="submit" value="View" />
+            </div>
+        </div>
+        
+    <table>
+        <tr class="time">
+            <td rowspan="2" class="header">
+                Year
+                <select name="Year">
+                    <option value="2019">2019</option>
+                    <option value="2020">2020</option>
+                    <option value="2021">2021</option>
+                    <option value="2022" selected>2022</option>
+                </select>
+                <br>
+                Week
+                <select name="Week">
+                    <option value="">17/01 to 23/01</option>
+                    <option value="">17/10 to 23/10</option>
+                    <option value="">24/10 to 30/10</option>
+                    <option value="">31/10 to 06/11</option>
+                </select>
+            </td>
+            <td>MON</td>
+            <td>TUE</td>
+            <td>WED</td>
+            <td>THU</td>
+            <td>FRI</td>
+            <td>SAT</td>
+            <td>SUN</td>
+        </tr>
+        <tr class="time">
+            <td>17/01</td>
+            <td>18/01</td>
+            <td>19/01</td>
+            <td>20/01</td>
+            <td>21/01</td>
+            <td>22/01</td>
+            <td>23/01</td>
+        </tr>
+        <tr>
+            <td>Slot 1</td>
+            <td>
+                <a href="#" class="subject">IOT1702<br>-PRF192<br>at BE-301</a><br>
+                <span class="parentheses">(<span class="attended">Attended</span>)</span>
+                <span class="edunext">EduNext</span> <br>
+                <p class="time-slot">(7:30-9:00)</p>
+            </td>
+            <td>-</td>
+            <td>
+                <a href="#" class="subject">IOT1702<br>-PRF192<br>at BE-301</a><br>
+                <span class="parentheses">(<span class="attended">Attended</span>)</span>
+                <span class="edunext">EduNext</span> <br>
+                <p class="time-slot">(7:30-9:00)</p>
+            </td>
+            <td></td>
+            <td>
+                <a href="#" class="subject">IOT1702<br>-PRF192<br>at BE-301</a><br>
+                <span class="parentheses">(<span class="not_yet">Not yet</span>)</span>
+                <span class="edunext">EduNext</span> <br>
+                <p class="time-slot">(7:30-9:00)</p>
+            </td>
+            <td>-</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>Slot 2</td>
+            <td>
+                <a href="#" class="subject">AI1604<br>-DBI202<br>at BE-315</a><br>
+                <span class="parentheses">(<span class="attended">Attended</span>)</span>
+                <span class="edunext">EduNext</span> <br>
+                <p class="time-slot">(9:10-10:40)</p>
+            </td>
+            <td>-</td>
+            <td>
+                <a href="#" class="subject">AI1604<br>-DBI202<br>at BE-315</a><br>
+                <span class="parentheses">(<span class="not_yet">Not yet</span>)</span>
+                <span class="edunext">EduNext</span> <br>
+                <p class="time-slot">(9:10-10:40)</p>
+            </td>
+            <td>
+                <a href="#" class="subject">SE1501-NET<br>-PRU211m<br>at DE-331</a><br>
+                <span class="parentheses">(<span class="not_yet">Not yet</span>)</span>
+                <p class="time-slot">(9:10-10:40)</p>
+            </td>
+            <td>
+                <a href="#" class="subject">AI1604<br>-DBI202<br>at BE-315</a><br>
+                <span class="parentheses">(<span class="not_yet">Not yet</span>)</span>
+                <span class="edunext">EduNext</span> <br>
+                <p class="time-slot">(9:10-10:40)</p>
+            </td>
+            <td>-</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>Slot 3</td>
+            <td>
+                <a href="#" class="subject">SE1610<br>-PRJ301<br>at DE-217</a><br>
+                <span class="parentheses">(<span class="attended">Attended</span>)</span>
+                <span class="edunext">EduNext</span> <br>
+                <p class="time-slot">(10:50-12:20)</p>
+            </td>
+            <td>
+                <a href="#" class="subject">SE1501-NET<br>-PRU211m<br>at DE-331</a><br>
+                <span class="parentheses">(<span class="attended">Attended</span>)</span>
+                <p class="time-slot">(10:50-12:20)</p>
+            </td>
+            <td>
+                <a href="#" class="subject">SE1610<br>-PRJ301<br>at DE-217</a><br>
+                <span class="parentheses">(<span class="not_yet">Not yet</span>)</span>
+                <span class="edunext">EduNext</span> <br>
+                <p class="time-slot">(10:50-12:20)</p>
+            </td>
+            <td>
+                <a href="#" class="subject">SE1501-NET<br>-PRU211m<br>at DE-331</a><br>
+                <span class="parentheses">(<span class="not_yet">Not yet</span>)</span>
+                <p class="time-slot">(10:50-12:20)</p>
+            </td>
+            <td>
+                <a href="#" class="subject">SE1610<br>-PRJ301<br>at DE-217</a><br>
+                <span class="parentheses">(<span class="not_yet">Not yet</span>)</span>
+                <span class="edunext">EduNext</span> <br>
+                <p class="time-slot">(10:50-12:20)</p>
+            </td>
+            <td>-</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>Slot 4</td>
+            <td>
+                <a href="#" class="subject">SE1608<br>-PRJ301<br>at DE-222</a><br>
+                <span class="parentheses">(<span class="attended">Attended</span>)</span>
+                <span class="edunext">EduNext</span> <br>
+                <p class="time-slot">(12:50-14:20)</p>
+            </td>
+            <td>
+                <a href="#" class="subject">SE1616<br>-PRJ301<br>at BE-101</a><br>
+                <span class="parentheses">(<span class="attended">Attended</span>)</span>
+                <span class="edunext">EduNext</span> <br>
+                <p class="time-slot">(12:50-14:20)</p>
+            </td>
+            <td>
+                <a href="#" class="subject">SE1608<br>-PRJ301<br>at DE-222</a><br>
+                <span class="parentheses">(<span class="not_yet">Not yet</span>)</span>
+                <span class="edunext">EduNext</span> <br>
+                <p class="time-slot">(12:50-14:20)</p>
+            </td>
+            <td>
+                <a href="#" class="subject">SE1616<br>-PRJ301<br>at BE-101</a><br>
+                <span class="parentheses">(<span class="not_yet">Not yet</span>)</span>
+                <span class="edunext">EduNext</span> <br>
+                <p class="time-slot">(12:50-14:20)</p>
+            </td>
+            <td>
+                <a href="#" class="subject">SE1608<br>-PRJ301<br>at DE-222</a><br>
+                <span class="parentheses">(<span class="not_yet">Not yet</span>)</span>
+                <span class="edunext">EduNext</span> <br>
+                <p class="time-slot">(12:50-14:20)</p>
+            </td>
+            <td>-</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>Slot 5</td>
+            <td>
+                <a href="#" class="subject">SE1611<br>-PRJ301<br>at DE-223</a><br>
+                <span class="parentheses">(<span class="attended">Attended</span>)</span>
+                <span class="edunext">EduNext</span> <br>
+                <p class="time-slot">(14:30-16:00)</p>
+            </td>
+            <td>
+                <a href="#" class="subject">SE1616<br>-PRJ301<br>at BE-101</a><br>
+                <span class="parentheses">(<span class="attended">Attended</span>)</span>
+                <span class="edunext">EduNext</span> <br>
+                <p class="time-slot">(14:30-16:00)</p>
+            </td>
+            <td>
+                <a href="#" class="subject">SE1611<br>-PRJ301<br>at DE-223</a><br>
+                <span class="parentheses">(<span class="not_yet">Not yet</span>)</span>
+                <span class="edunext">EduNext</span> <br>
+                <p class="time-slot">(14:30-16:00)</p>
+            </td>
+            <td>-</td>
+            <td>
+                <a href="#" class="subject">SE1611<br>-PRJ301<br>at DE-223</a><br>
+                <span class="parentheses">(<span class="not_yet">Not yet</span>)</span>
+                <span class="edunext">EduNext</span> <br>
+                <p class="time-slot">(14:30-16:00)</p>
+            </td>
+            <td>-</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>Slot 6</td>
+            <td>
+                <a href="#" class="subject">SE1628<br>-DBI202<br>at DE-C204</a><br>
+                <span class="parentheses">(<span class="attended">Attended</span>)</span>
+                <span class="edunext">EduNext</span> <br>
+                <p class="time-slot">(14:30-16:00)</p>
+            </td>
+            <td>-</td>
+            <td>
+                <a href="#" class="subject">SE1628<br>-DBI202<br>at DE-C204</a><br>
+                <span class="parentheses">(<span class="not_yet">Not yet</span>)</span>
+                <span class="edunext">EduNext</span> <br>
+                <p class="time-slot">(14:30-16:00)</p>
+            </td>
+            <td>-</td>
+            <td>
+                <a href="#" class="subject">SE1628<br>-DBI202<br>at DE-C204</a><br>
+                <span class="parentheses">(<span class="not_yet">Not yet</span>)</span>
+                <span class="edunext">EduNext</span> <br>
+                <p class="time-slot">(14:30-16:00)</p>
+            </td>
+            <td>-</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>Slot 7</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>
+                <a href="#" class="subject">SWP490_G19<br>-SWP490<br>at AL-L402</a><br>
+                <span class="parentheses">(<span class="not_yet">Not yet</span>)</span>
+                <span class="edunext">EduNext</span> <br>
+                <p class="time-slot">(18:00-19:30)</p>
+            </td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>Slot 8</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+        </tr>
+    </table>
+    </body>
+</html>

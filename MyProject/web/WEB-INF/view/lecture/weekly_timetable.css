@@ -1,0 +1,90 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this template
+*/
+/* 
+    Created on : Oct 13, 2022, 10:55:31 PM
+    Author     : admin
+*/
+
+body{
+    overflow-x: hidden;
+}
+
+h1{
+    margin-left: 20px;
+    font-weight: 100;
+}
+.time{
+    background-color: rgb(93, 121, 205);
+}
+a{
+    text-decoration: none;
+}
+
+.material{
+    background-color: orange;
+    color: white;
+    font-size: x-small;
+    font-weight: bolder;
+    padding: 3px 5px;
+    border-radius: 0.2rem;
+}
+
+.time-slot{
+    display: inline;
+    background-color: rgba(77, 158, 77, 0.9);
+    color: white;
+    font-size: x-small;
+    padding: 3px 5px;
+    border-radius: 0.2rem;
+    font-weight: bolder;
+}
+
+.attended{
+    display: inline;
+    color: green;
+}
+
+.not_yet{
+    display: inline;
+    color: red;
+}
+
+.parentheses{
+    color: rgb(93, 121, 205);
+}
+
+.subject{
+    color: rgb(93, 121, 205);
+}
+
+p{
+    margin: 0;
+}
+
+.header{
+    padding: 0px 20px 0px 0px;
+}
+
+.edunext{
+    background-color: rgb(83, 192, 196);
+    color: white;
+    font-size: x-small;
+    font-weight: bolder;
+    padding: 3px 5px;
+    border-radius: 0.2rem;
+}
+
+.search{
+    text-align: center;
+}
+
+table{
+    margin: 0px 15px ;
+    width: 100%;
+}
+
+.search div{
+    margin-bottom: 5px;
+}
