@@ -25,10 +25,16 @@ a{
 }
 
 .attended{
+    display: inline;
     color: green;
 }
 
 .not_yet{
+    display: inline;
     color: red;
+}
+
+.parentheses{
+    color: rgb(93, 121, 205);
 }
 

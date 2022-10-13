@@ -14,13 +14,21 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
         <h1>GiangNXTHE161756 (Nguyễn Xuân Trường Giang)</h1>
     <table>
         <tr class="time">
-            <td>
-                <label for="">Year</label>
-                <select name="" id="">
+            <td rowspan="2">
+                Year
+                <select name="Year">
                     <option value="2019">2019</option>
                     <option value="2020">2020</option>
                     <option value="2021">2021</option>
                     <option value="2022" selected>2022</option>
+                </select>
+                <br>
+                Week
+                <select name="Week">
+                    <option value="">10/10 to 16/10</option>
+                    <option value="">17/10 to 23/10</option>
+                    <option value="">24/10 to 30/10</option>
+                    <option value="">31/10 to 06/11</option>
                 </select>
             </td>
             <td>MON</td>
@@ -32,15 +40,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
             <td>SUN</td>
         </tr>
         <tr class="time">
-            <td>
-                Week
-                <select name="Week">
-                    <option value="">10/10 to 16/10</option>
-                    <option value="">17/10 to 23/10</option>
-                    <option value="">24/10 to 30/10</option>
-                    <option value="">31/10 to 06/11</option>
-                </select>
-            </td>
             <td>10/10</td>
             <td>11/10</td>
             <td>12/10</td>
@@ -64,21 +63,21 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
             <td>
                 <a href="#">IOT102-</a><a class="material" href="#">View Materials</a><br>
                 <p>at DE-C205</p>
-                <p class="attended">(attended)</p>
+                <div class="parentheses">(<div class="attended">attended</div>)</div>
                 <p class="time-slot">(7:30-9:00)</p>
             </td>
             <td>-</td>
             <td>
                 <a href="#">IOT102-</a><a class="material" href="#">View Materials</a><br>
                 <p>at DE-C205</p>
-                <p class="attended">(attended)</p>
+                <div class="parentheses">(<div class="attended">attended</div>)</div>
                 <p class="time-slot">(10:50-12:20)</p>
             </td>
             <td></td>
             <td>
                 <a href="#">IOT102-</a><a class="material" href="#">View Materials</a><br>
                 <p>at DE-C205</p>
-                <p class="not_yet">(Not yet)</p>
+                <div class="parentheses">(<div class="not_yet">Not yet</div>)</div>
                 <p class="time-slot">(7:30-9:00)</p>
             </td>
             <td>-</td>
@@ -89,26 +88,26 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
             <td>
                 <a href="#">PRJ301-</a><a class="material" href="#">View Materials</a><br>
                 <p>at DE-C205</p>
-                <p class="attended">(attended)</p>
+                <div class="parentheses">(<div class="attended">attended</div>)</div>
                 <p class="time-slot">(9:10-10:40)</p>
             </td>
             <td>-</td>
             <td>
                 <a href="#">PRJ301-</a><a class="material" href="#">View Materials</a><br>
                 <p>at DE-C205</p>
-                <p class="attended">(attended)</p>
+                <div class="parentheses">(<div class="attended">attended</div>)</div>
                 <p class="time-slot">(9:10-10:40)</p>
             </td>
             <td>
                 <a href="#">JPD123-</a><a class="material" href="#">View Materials</a><br>
                 <p>at DE-C203</p>
-                <p class="not_yet">(Not yet)</p>
+                <div class="parentheses">(<div class="not_yet">Not yet</div>)</div>
                 <p class="time-slot">(9:10-10-40)</p>
             </td>
             <td>
                 <a href="#">PRJ301-</a><a class="material" href="#">View Materials</a><br>
                 <p>at DE-C205</p>
-                <p class="not_yet">(Not yet)</p>
+                <div class="parentheses">(<div class="not_yet">Not yet</div>)</div>
                 <p class="time-slot">(9:10-10:40)</p>
             </td>
             <td>-</td>
@@ -119,31 +118,31 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
             <td>
                 <a href="#">MAS291-</a><a class="material" href="#">View Materials</a><br>
                 <p>at DE-C205</p>
-                <p class="attended">(attended)</p>
+                <div class="parentheses">(<div class="attended">attended</div>)</div>
                 <p class="time-slot">(10:50-12:20)</p>
             </td>
             <td>
                 <a href="#">JPD123-</a><a class="material" href="#">View Materials</a><br>
                 <p>at DE-C203</p>
-                <p class="attended">(attended)</p>
+                <div class="parentheses">(<div class="attended">attended</div>)</div>
                 <p class="time-slot">(10:50-12:20)</p>
             </td>
             <td>
                 <a href="#">MAS291-</a><a class="material" href="#">View Materials</a><br>
                 <p>at DE-C205</p>
-                <p class="attended">(attended)</p>
+                <div class="parentheses">(<div class="attended">attended</div>)</div>
                 <p class="time-slot">(10:50-12:20)</p>
             </td>
             <td>
                 <a href="#">JPD123-</a><a class="material" href="#">View Materials</a><br>
                 <p>at DE-C203</p>
-                <p class="not_yet">(Not yet)</p>
+                <div class="parentheses">(<div class="not_yet">Not yet</div>)</div>
                 <p class="time-slot">(10:50-12:20)</p>
             </td>
             <td>
                 <a href="#">MAS291-</a><a class="material" href="#">View Materials</a><br>
                 <p>at DE-C205</p>
-                <p  class="not_yet">(Not yet)</p>
+                <div class="parentheses">(<div class="not_yet">Not yet</div>)</div>
                 <p class="time-slot">(10:50-12:20)</p>
             </td>
             <td>-</td>
