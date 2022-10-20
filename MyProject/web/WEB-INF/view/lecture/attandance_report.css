@@ -1,0 +1,23 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this template
+*/
+/* 
+    Created on : Oct 20, 2022, 11:00:52 AM
+    Author     : admin
+*/
+table{
+    text-align: center;
+}
+
+.attended{
+    color: lightgreen;
+}
+
+.absent{
+    color: red;
+}
+
+.header{
+    background-color: rgb(93, 121, 205);
+}
