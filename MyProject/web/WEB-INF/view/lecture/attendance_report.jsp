@@ -1,17 +1,19 @@
+<%-- 
+    Document   : attandance_report
+    Created on : Oct 20, 2022, 11:00:33 AM
+    Author     : admin
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit this template
--->
 <html>
     <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="attandance_report.css">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>JSP Page</title>
+        <link rel="stylesheet" href="attendance_report.css">
     </head>
     <body>
-        <h1>Attendence report</h1>
+        <h1>Attendance report</h1>
     <select name="group" id="">
         <option value="">SE1608_PRJ301</option>
         <option value="">SE1611_PRJ301</option>
