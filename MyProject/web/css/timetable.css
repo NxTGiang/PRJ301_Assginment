@@ -1,0 +1,65 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this template
+*/
+/* 
+    Created on : Oct 27, 2022, 1:12:05 PM
+    Author     : admin
+*/
+
+body{
+    overflow-x: hidden;
+}
+
+.time{
+    background-color: rgb(93, 121, 205);
+}
+a{
+    text-decoration: none;
+}
+
+.material{
+    background-color: orange;
+    color: white;
+    font-size: x-small;
+    font-weight: bolder;
+    padding: 3px 5px;
+    border-radius: 0.2rem;
+}
+
+.time-slot{
+    display: inline;
+    background-color: rgba(77, 158, 77, 0.9);
+    color: white;
+    font-size: x-small;
+    padding: 3px 5px;
+    border-radius: 0.2rem;
+    font-weight: bolder;
+}
+
+.attended{
+    display: inline;
+    color: green;
+}
+
+.not_yet{
+    display: inline;
+    color: red;
+}
+
+.parentheses{
+    color: rgb(93, 121, 205);
+}
+
+.subject{
+    color: rgb(93, 121, 205);
+}
+
+p{
+    margin: 0;
+}
+
+table{
+    margin: 0px 0px ;
+    width: 100%;
+}
