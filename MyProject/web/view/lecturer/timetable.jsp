@@ -38,7 +38,7 @@
                         <td>
                             <c:forEach items="${requestScope.sessions}" var="ses">
                                 <c:if test="${helper.compare(ses.date,d) eq 0 and (ses.timeslot.id eq slot.id)}">
-                                    <a class="subject" href="att?id=${ses.id}">${ses.group.name}<br/>-${ses.group.subject.name}</a>
+                                    <a class="subject" href="takeatt?id=${ses.id}">${ses.group.name}<br/>-${ses.group.subject.name}</a>
                                     <br/>
                                     <span>at </span>${ses.room.name}
                                     <br/>

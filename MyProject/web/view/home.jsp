@@ -13,7 +13,8 @@
     </head>
     <body>
         <h1>Home</h1>
-        <a href="#">Schedule</a> <br/>
-        <a href="#">Attendance Status</a>
+        <a href="lecturer/timetable?lid=1">Schedule</a> <br/>
+        
+        <a href="lecturer/attStatus">Attendance Status</a>
     </body>
 </html>
