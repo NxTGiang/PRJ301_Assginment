@@ -10,11 +10,16 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+        <link rel="stylesheet" href="css/home.css"/>
     </head>
     <body>
         <h1>Home</h1>
-        <a href="lecturer/timetable?lid=1">Schedule</a> <br/>
+        <a href="lecturer/timetable?lid=${requestScope.lecturer.id}">Schedule</a> <br/>
         
-        <a href="lecturer/attstatus?lid=1">Attendance Status</a>
+        <a href="lecturer/attstatus?lid=${requestScope.lecturer.id}">Attendance Status</a>
+        
+        
+        <a class="header">${requestScope.account.username}</a>
+        <a class="header" href="logout">Log out</a>
     </body>
 </html>
