@@ -20,7 +20,6 @@ import model.Group;
 import model.Session;
 import model.Student;
 
-
 /**
  *
  * @author admin
@@ -39,29 +38,33 @@ public class AttStatusController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         int lid = Integer.parseInt(request.getParameter("lid"));
-        int gid = Integer.parseInt(request.getParameter("gid"));
         GroupDBContext gdb = new GroupDBContext();
         ArrayList<Group> groups = gdb.listGroup(lid);
-        Group group = gdb.get(gid);
-        
-        SessionDBContext sesdb = new SessionDBContext();
-        ArrayList<Session> sessions = sesdb.getSessionFromGroup(gid);
-        
-        StudentDBContext sdb = new StudentDBContext();
-        ArrayList<Student> students = sdb.getListStudent(gid);
-        
-        AttendanceDBContext attdb = new AttendanceDBContext();
-        ArrayList<Attandance> atts = attdb.listAtt(gid);
-        
-        request.setAttribute("sessions", sessions);
-        request.setAttribute("group", group);
         request.setAttribute("groups", groups);
-        request.setAttribute("students", students);
-        request.setAttribute("atts", atts);
+        
+        if (request.getParameter("gid")== null) {
+        } else {
+            
+            int gid = Integer.parseInt(request.getParameter("gid"));
+            Group group = gdb.get(gid);
+
+            SessionDBContext sesdb = new SessionDBContext();
+            ArrayList<Session> sessions = sesdb.getSessionFromGroup(gid);
+
+            StudentDBContext sdb = new StudentDBContext();
+            ArrayList<Student> students = sdb.getListStudent(gid);
+
+            AttendanceDBContext attdb = new AttendanceDBContext();
+            ArrayList<Attandance> atts = attdb.listAtt(gid);
+
+            request.setAttribute("sessions", sessions);
+            request.setAttribute("group", group);
+            request.setAttribute("students", students);
+            request.setAttribute("atts", atts);
+        }
+
         request.getRequestDispatcher("../view/lecturer/attstatus.jsp").forward(request, response);
-        
-       
-        
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

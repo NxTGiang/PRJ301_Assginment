@@ -15,6 +15,6 @@
         <h1>Home</h1>
         <a href="lecturer/timetable?lid=1">Schedule</a> <br/>
         
-        <a href="lecturer/attStatus">Attendance Status</a>
+        <a href="lecturer/attstatus?lid=1">Attendance Status</a>
     </body>
 </html>

@@ -24,44 +24,46 @@
                         </c:if>
                         value="${group.id}">${group.name}</option>
                 </c:forEach>
-                    
+
             </select>
             <input type="submit" value="View"/>
         </form>
-       
-        <table>
-            <tr class="header">
-                <td>No</td>
-                <td>ID</td>
-                <td>Full Name</td>
-                <c:forEach items="${requestScope.sessions}" var="ses">
-                    <td>Slot ${ses.index}</td>
-                </c:forEach>
-                <td>Absent(%)</td>
-            </tr>
-            <c:forEach items="${requestScope.students}" var="student" varStatus="loop">
-                <tr>
-                    <td>${loop.index+1}</td>
-                    <td>${student.id}</td>
-                    <td>${student.name}</td>
-                    <c:forEach items="${requestScope.atts}" var="a">
-                        <c:if test="${student.id eq a.student.id}">
-                            <c:if test="${!a.session.attandated}">
-                                <td>-</td>
-                            </c:if>
-                            <c:if test="${a.session.attandated}">
-                                <c:if test="${a.present}">
-                                    <td class="attended">&#10004</td>
-                                </c:if>
-                                <c:if test="${!a.present}">
-                                    <td class="absent">&#10008</td>
-                                </c:if>
-                            </c:if>   
-                        </c:if>
+        <c:if   test="${param.gid ne null}">
+            <table>
+                <tr class="header">
+                    <td>No</td>
+                    <td>ID</td>
+                    <td>Full Name</td>
+                    <c:forEach items="${requestScope.sessions}" var="ses">
+                        <td>Slot ${ses.index}</td>
                     </c:forEach>
+                    <td>Absent(%)</td>
                 </tr>
-            </c:forEach>
-            
-        </table>
+                <c:forEach items="${requestScope.students}" var="student" varStatus="loop">
+                    <tr>
+                        <td>${loop.index+1}</td>
+                        <td>${student.id}</td>
+                        <td>${student.name}</td>
+                        <c:forEach items="${requestScope.atts}" var="a">
+                            <c:if test="${student.id eq a.student.id}">
+                                <c:if test="${!a.session.attandated}">
+                                    <td>-</td>
+                                </c:if>
+                                <c:if test="${a.session.attandated}">
+                                    <c:if test="${a.present}">
+                                        <td class="attended">&#10004</td>
+                                    </c:if>
+                                    <c:if test="${!a.present}">
+                                        <td class="absent">&#10008</td>
+                                    </c:if>
+                                </c:if>   
+                            </c:if>
+                        </c:forEach>
+                    </tr>
+                </c:forEach>
+
+            </table>
+        </c:if>
+
     </body>
 </html>
