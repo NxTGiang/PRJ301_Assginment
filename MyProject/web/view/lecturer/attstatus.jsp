@@ -15,7 +15,7 @@
     </head>
     <body>
         <form action="attstatus"  method="GET">
-            <input type="hidden" name="lid" value="${param.lid}"/>
+            
             <select name="gid">
                 <c:forEach items="${requestScope.groups}" var="group">
                     <option

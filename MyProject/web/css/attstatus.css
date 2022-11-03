@@ -19,5 +19,9 @@ table{
 }
 
 .header{
-    background-color: rgb(93, 121, 205);
+    background-color: rgb(60, 105, 173);
+    color: white;
+}
+td{
+    margin: 3px 7px;
 }

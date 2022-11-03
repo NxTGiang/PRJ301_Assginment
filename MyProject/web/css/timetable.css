@@ -7,12 +7,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this t
     Author     : admin
 */
 
-body{
-    overflow-x: hidden;
-}
 
 .time{
-    background-color: rgb(141, 68, 139);
+    background-color: rgb(60, 105, 173);
     color: white;
 }
 a{
@@ -62,5 +59,12 @@ p{
 
 table{
     margin: 0px 0px ;
-    width: 100%;
+}
+
+td{
+    padding: 2px 7px;
+}
+
+.days{
+    text-align: center;
 }

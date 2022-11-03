@@ -14,9 +14,9 @@
     </head>
     <body>
         <h1>Home</h1>
-        <a href="lecturer/timetable?lid=${requestScope.lecturer.id}">Schedule</a> <br/>
+        <a href="lecturer/timetable">Schedule</a> <br/>
         
-        <a href="lecturer/attstatus?lid=${requestScope.lecturer.id}">Attendance Status</a>
+        <a href="lecturer/attstatus">Attendance Status</a>
         
         
         <a class="header">${requestScope.account.username}</a>

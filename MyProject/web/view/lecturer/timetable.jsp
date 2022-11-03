@@ -21,14 +21,13 @@
             <tr class="time">
                 <td>
                     <form action="timetable" method="GET">
-                        <input type="hidden" name="lid" value="${param.lid}"/>
                         From: <input type="date" name="from" value="${requestScope.from}"/> <br/>
                         To:   <input type="date" name="to" value="${requestScope.to}"/> <br/>
                         <input type="submit" value="View"/> 
                     </form>
                 </td>
                 <c:forEach items="${requestScope.dates}" var="d">
-                    <td>${d}<br/>${helper.getDayNameofWeek(d)}</td>
+                    <td class="days">${d}<br/>${helper.getDayNameofWeek(d)}</td>
                     </c:forEach>
             </tr>
             <c:forEach items="${requestScope.slots}" var="slot">

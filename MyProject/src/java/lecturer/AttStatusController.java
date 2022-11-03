@@ -4,8 +4,10 @@
  */
 package lecturer;
 
+import controller.auth.BaseRoleController;
 import dal.AttendanceDBContext;
 import dal.GroupDBContext;
+import dal.LecturerDBContext;
 import dal.SessionDBContext;
 import dal.StudentDBContext;
 import jakarta.servlet.ServletException;
@@ -15,6 +17,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import model.Account;
 import model.Attandance;
 import model.Group;
 import model.Session;
@@ -24,7 +27,7 @@ import model.Student;
  *
  * @author admin
  */
-public class AttStatusController extends HttpServlet {
+public class AttStatusController extends BaseRoleController {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,9 +38,10 @@ public class AttStatusController extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response, Account account)
             throws ServletException, IOException {
-        int lid = Integer.parseInt(request.getParameter("lid"));
+        LecturerDBContext ldb = new LecturerDBContext();
+        int lid = ldb.getLecture(account.getUsername()).getId();
         GroupDBContext gdb = new GroupDBContext();
         ArrayList<Group> groups = gdb.listGroup(lid);
         request.setAttribute("groups", groups);
@@ -67,43 +71,16 @@ public class AttStatusController extends HttpServlet {
 
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
+    protected void processPost(HttpServletRequest req, HttpServletResponse resp, Account account) throws ServletException, IOException {
+        processRequest(req, resp, account);
     }
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
+    protected void processGet(HttpServletRequest req, HttpServletResponse resp, Account account) throws ServletException, IOException {
+        processRequest(req, resp, account);
     }
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
+    
 
 }
