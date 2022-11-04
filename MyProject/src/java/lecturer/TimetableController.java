@@ -59,6 +59,8 @@ public class TimetableController extends BaseRoleController {
             to = java.sql.Date.valueOf(raw_to);
         }
         
+        
+        request.setAttribute("username", account.getUsername());
         request.setAttribute("from", from);
         request.setAttribute("to", to);
         request.setAttribute("dates", DateTimeHelper.getDateList(from, to));

@@ -60,13 +60,13 @@ public class AttStatusController extends BaseRoleController {
 
             AttendanceDBContext attdb = new AttendanceDBContext();
             ArrayList<Attandance> atts = attdb.listAtt(gid);
-
+            
             request.setAttribute("sessions", sessions);
             request.setAttribute("group", group);
             request.setAttribute("students", students);
             request.setAttribute("atts", atts);
         }
-
+        request.setAttribute("username", account.getUsername());
         request.getRequestDispatcher("../view/lecturer/attstatus.jsp").forward(request, response);
 
     }

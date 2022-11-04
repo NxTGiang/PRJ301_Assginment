@@ -232,7 +232,7 @@ public class SessionDBContext extends dal.DBContext<Session> {
                     + "	,t.tid,t.[description] tdescription\n"
                     + "	,l.lid,l.lname\n"
                     + "	,sub.subid,sub.subname\n"
-                    + "	,s.stdid,s.stdname\n"
+                    + "	,s.stdid,s.stdname,s.imgURL\n"
                     + "	,ISNULL(a.present,0) present, ISNULL(a.[description],'') [description]\n"
                     + "		FROM [Session] ses\n"
                     + "		INNER JOIN Room r ON r.rid = ses.rid\n"
@@ -284,6 +284,7 @@ public class SessionDBContext extends dal.DBContext<Session> {
                 Student s = new Student();
                 s.setId(rs.getInt("stdid"));
                 s.setName(rs.getString("stdname"));
+                s.setImageURL(rs.getString("imgURL"));
                 //read attandance
                 Attandance a = new Attandance();
                 a.setStudent(s);

@@ -13,10 +13,12 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.Date;
 import model.Account;
 import model.Attandance;
 import model.Session;
 import model.Student;
+import util.DateTimeHelper;
 
 /**
  *
@@ -54,6 +56,10 @@ public class AttController extends BaseRoleController {
         int sesid = Integer.parseInt(req.getParameter("id"));
         SessionDBContext sesDB = new SessionDBContext();
         Session ses = sesDB.get(sesid);
+        Date today = new Date();
+        java.sql.Date today_sql = DateTimeHelper.toDateSql(today);
+        
+        req.setAttribute("today", today_sql);
         req.setAttribute("ses", ses);
         req.getRequestDispatcher("../view/lecturer/checkattendance.jsp").forward(req, resp);
     }

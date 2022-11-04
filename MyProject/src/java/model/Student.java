@@ -13,9 +13,20 @@ import java.util.ArrayList;
 public class Student {
     private int id;
     private String name;
+    private String imageURL;
     private ArrayList<Group> groups = new ArrayList<>();
     private ArrayList<Attandance> attandances = new ArrayList<>();
 
+    public String getImageURL() {
+        return imageURL;
+    }
+
+    public void setImageURL(String imageURL) {
+        this.imageURL = imageURL;
+    }
+
+    
+    
     public int getId() {
         return id;
     }

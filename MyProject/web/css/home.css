@@ -9,9 +9,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this t
 .header{
     text-decoration: none;
     background-color: rgba(77, 158, 77, 0.9);
-    color: white;  
+    color: white;
 }
 
 a{
     text-decoration: none;
 }
+

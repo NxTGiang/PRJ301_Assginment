@@ -8190,11 +8190,11 @@ h1, h2, h3, h4, h5,
   .login-wrap h3 {
     font-weight: 700;
     font-size: 20px;
-    color: #8d448b; }
+    color: rgb(60, 105, 173); }
   .login-wrap .icon {
     width: 80px;
     height: 80px;
-    background: #8d448b;
+    background: rgb(60, 105, 173);
     border-radius: 50%;
     font-size: 30px;
     margin: 0 auto;
@@ -8292,9 +8292,9 @@ h1, h2, h3, h4, h5,
 
 /* Style the checkmark/indicator */
 .checkbox-primary {
-  color: #8d448b; }
+  color: rgb(60, 105, 173); }
   .checkbox-primary input:checked ~ .checkmark:after {
-    color: #8d448b; }
+    color: rgb(60, 105, 173); }
 
 .btn {
   cursor: pointer;
@@ -8305,20 +8305,20 @@ h1, h2, h3, h4, h5,
   .btn:hover, .btn:active, .btn:focus {
     outline: none; }
   .btn.btn-primary {
-    background: #8d448b !important;
-    border: 1px solid #8d448b !important;
+    background: rgb(60, 105, 173) !important;
+    border: 1px solid rgb(60, 105, 173) !important;
     color: #fff !important; }
     .btn.btn-primary:hover {
-      border: 1px solid #8d448b;
+      border: 1px solid rgb(60, 105, 173);
       background: transparent;
-      color: #8d448b; }
+      color: rgb(60, 105, 173); }
     .btn.btn-primary.btn-outline-primary {
-      border: 1px solid #8d448b;
+      border: 1px solid rgb(60, 105, 173);
       background: transparent;
-      color: #8d448b; }
+      color: rgb(60, 105, 173); }
       .btn.btn-primary.btn-outline-primary:hover {
         border: 1px solid transparent;
-        background: #8d448b;
+        background: rgb(60, 105, 173);
         color: #fff; }
 
 .form-group {

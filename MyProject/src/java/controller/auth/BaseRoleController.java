@@ -1,3 +1,4 @@
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
@@ -39,7 +40,7 @@ public abstract class BaseRoleController extends BaseAuthenticationController {
         }
         else
         {
-            resp.getWriter().println("access denied!");
+            resp.sendRedirect("home");
         }
     }
     
@@ -53,7 +54,7 @@ public abstract class BaseRoleController extends BaseAuthenticationController {
         }
         else
         {
-            resp.getWriter().println("access denied!");
+            resp.sendRedirect("home");
         }
     }
     
