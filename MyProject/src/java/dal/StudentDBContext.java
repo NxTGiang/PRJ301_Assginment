@@ -17,29 +17,49 @@ import model.Student;
  * @author admin
  */
 public class StudentDBContext extends DBContext<Student> {
-    
-    
+
+    public Student getStudent(String username) {
+        try {
+            String sql = "SELECT A.username, SA.stdid, S.stdname\n"
+                    + "                    	FROM Account A \n"
+                    + "                    	INNER JOIN Student_Account SA ON A.username = SA.username\n"
+                    + "                    	INNER JOIN Student S ON SA.stdid = S.stdid\n"
+                    + "                    	WHERE A.username = ?";
+            PreparedStatement stm = connection.prepareStatement(sql);
+            stm.setString(1, username);
+            ResultSet rs = stm.executeQuery();
+            if (rs.next()) {
+                Student s = new Student();
+                s.setId(rs.getInt("stdid"));
+                s.setName(rs.getString("stdname"));
+                return s;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(LecturerDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
 
     public ArrayList<Student> getListStudent(int gid) {
         ArrayList<Student> stds = new ArrayList<>();
-        try{
-        String sql = "SELECT S.stdid, stdname\n"
-                + "		,G.gid\n"
-                + "	FROM Student S\n"
-                + "		INNER JOIN Student_Group SG ON S.stdid = SG.stdid\n"
-                + "		INNER JOIN [Group] G ON SG.gid = G.gid\n"
-                + "		WHERE G.gid = ?";
-        PreparedStatement stm = connection.prepareStatement(sql);
-        stm.setInt(1, gid);
-        ResultSet rs = stm.executeQuery();
-        while (rs.next()){
-            Student s = new Student();
-            
-            s.setId(rs.getInt("stdid"));
-            s.setName(rs.getString("stdname"));
-            
-            stds.add(s);
-        }
+        try {
+            String sql = "SELECT S.stdid, stdname\n"
+                    + "		,G.gid\n"
+                    + "	FROM Student S\n"
+                    + "		INNER JOIN Student_Group SG ON S.stdid = SG.stdid\n"
+                    + "		INNER JOIN [Group] G ON SG.gid = G.gid\n"
+                    + "		WHERE G.gid = ?";
+            PreparedStatement stm = connection.prepareStatement(sql);
+            stm.setInt(1, gid);
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {
+                Student s = new Student();
+
+                s.setId(rs.getInt("stdid"));
+                s.setName(rs.getString("stdname"));
+
+                stds.add(s);
+            }
         } catch (SQLException ex) {
             Logger.getLogger(LecturerDBContext.class.getName()).log(Level.SEVERE, null, ex);
         }

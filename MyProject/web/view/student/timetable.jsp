@@ -61,9 +61,8 @@
         <div class='title'>Timetable</div>
         <div class='top'>
             <div class="top-left">
-                <a class="header" href="home">Home</a> |
-                    <a class="header">Timetable</a>
-                </div>
+                <a class="header">Timetable</a>
+            </div>
             <div class='top-right'>
                 <a class="header">${requestScope.username}</a> |
                 <a class="header" href="../logout">Log out</a>
@@ -89,21 +88,26 @@
                     <td>Slot ${slot.id}</td>
                     <c:forEach items="${requestScope.dates}" var="d">
                         <td>
-                            <c:forEach items="${requestScope.sessions}" var="ses">
-                                
-                                
-                                <c:if test="${helper.compare(ses.date,d) eq 0 and (ses.timeslot.id eq slot.id)}">
-                                    <a class="subject" href="takeatt?id=${ses.id}">${ses.group.name}<br/>-${ses.group.subject.name}</a>
-                                    <div>at ${ses.room.name} </div>
-                                    <c:if test="${ses.attandated}">
-                                        <div class="parentheses">(<div class="attended">Attended</div>)</div>
+                            <c:forEach items="${requestScope.atts}" var="att">
+                                <c:if test="${helper.compare(att.session.date,d) eq 0 and (att.session.timeslot.id eq slot.id)}">
+                                    <a class="subject" href="#">${att.session.group.subject.name}</a>
+                                    <br/>
+                                    <div>at ${att.session.room.name} </div>
+                                    <c:if test="${att.session.attandated}">
+                                        <c:if test="${att.present}">
+                                            <div class="parentheses">(<div class="attended">Attended</div>)</div>
+                                        </c:if>
+                                        <c:if test="${!att.present}">
+                                            <div class="parentheses">(<div class="not_yet">Absent</div>)</div>
+                                        </c:if>    
+
                                     </c:if>
-                                    <c:if test="${!ses.attandated}">
+                                    <c:if test="${!att.session.attandated}">
                                         <div class="parentheses">(<div class="not_yet">Not yet</div>)</div>
                                     </c:if>
+
                                     <div class="time-slot">(${slot.description})</div>
                                 </c:if>
-                                    
 
                             </c:forEach>
                         </td>

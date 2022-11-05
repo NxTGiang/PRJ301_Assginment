@@ -12,21 +12,39 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
         <link rel="stylesheet" href="../css/attstatus.css"/>
+        <style>
+            a{
+                text-decoration: none;
+            }
+            .top-left{
+                text-align: left;
+            }
+            .top-left a{
+                margin: 2px 5px;
+                border-radius: 5px;
+                padding: 2px 4px;
+                font-weight: bold;
+                background-color: rgb(60, 105, 173);
+            }
+        </style>
     </head>
     <body>
         <div class='title'>Attandance Status</div>
         <div class='top'>
-            <div>
-                
+
+            <div class="top-left">
+                <a class="header" href="home">Home</a> |
+                <a class="header">Attandance Status</a>
             </div>
+
             <div class='top-right'>
                 <a class="header">${requestScope.username}</a> |
                 <a class="header" href="../logout">Log out</a>
             </div>
-            
+
         </div>
         <form action="attstatus"  method="GET">
-            
+
             <select name="gid">
                 <c:forEach items="${requestScope.groups}" var="group">
                     <option
@@ -48,7 +66,7 @@
                     <td>ID</td>
                     <td>Full Name</td>
                     <c:forEach items="${requestScope.sessions}" var="ses">
-                        <td>Slot ${ses.index}</td>
+                        <td>Session_No_${ses.index}</td>
                         <% numSession++;%>
                     </c:forEach>
                     <td>Absent(%)</td>
@@ -60,9 +78,9 @@
                         <td>${loop.index+1}</td>
                         <td>${student.id}</td>
                         <td>${student.name}</td>
-                        
+
                         <c:forEach items="${requestScope.atts}" var="a">
-                            
+
                             <c:if test="${student.id eq a.student.id}">
                                 <c:if test="${!a.session.attandated}">
                                     <td>-</td>
@@ -78,10 +96,10 @@
                                 </c:if>   
                             </c:if>
                         </c:forEach>
-                                        <td <c:if test="<%= timeAbsent*100/numSession >= 20%>">
-                                    class="absent"
+                        <td <c:if test="<%= timeAbsent*100/numSession >= 20%>">
+                                class="absent"
                             </c:if>><%= timeAbsent*100/numSession %></td>   
-                                        
+
                     </tr>
                 </c:forEach>
 

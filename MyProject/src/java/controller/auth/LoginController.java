@@ -12,7 +12,9 @@ import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
 import model.Account;
+import model.Role;
 
 /**
  *
@@ -77,7 +79,17 @@ public class LoginController extends HttpServlet {
             response.addCookie(u);
             response.addCookie(p);
             
-            response.sendRedirect("home");
+            ArrayList<Role> roles = account.getRoles();
+            for (Role role : roles) {
+                if(role.getRoleId() == 3){
+                    response.sendRedirect("student/timetable");
+                }
+                if (role.getRoleId() == 2){
+                    response.sendRedirect("lecturer/home");
+                }
+            }
+            
+            
         }
         
     }

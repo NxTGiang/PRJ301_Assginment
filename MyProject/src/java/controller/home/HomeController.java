@@ -34,7 +34,7 @@ public class HomeController extends BaseRoleController {
         
         request.setAttribute("account", account);
         request.setAttribute("lecturer", ldb.getLecture(account.getUsername()));
-       request.getRequestDispatcher("view/lecturer/home.jsp").forward(request, response);
+       request.getRequestDispatcher("../view/lecturer/home.jsp").forward(request, response);
     } 
 
     @Override

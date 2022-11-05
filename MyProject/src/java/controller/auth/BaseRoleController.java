@@ -40,7 +40,7 @@ public abstract class BaseRoleController extends BaseAuthenticationController {
         }
         else
         {
-            resp.sendRedirect("home");
+            resp.sendRedirect("../login");
         }
     }
     
@@ -54,7 +54,7 @@ public abstract class BaseRoleController extends BaseAuthenticationController {
         }
         else
         {
-            resp.sendRedirect("home");
+            resp.sendRedirect("../login");
         }
     }
     

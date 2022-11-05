@@ -12,6 +12,13 @@
         <title>JSP Page</title>
         <link rel="stylesheet" href="css/home.css"/>
         <style>
+            .header{
+                background-color: rgb(60, 105, 173);
+                color: white;
+            }
+            a{
+                text-decoration: none;
+            }
             html{
                 margin: 20px 150px;
                 font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -23,6 +30,16 @@
                 height: 30px;
                 padding-top: 5px;
                 margin-bottom: 30px;
+            }
+            .top-left{
+                text-align: left;
+            }
+            .top-left a{
+                margin: 2px 5px;
+                border-radius: 5px;
+                padding: 2px 4px;
+                font-weight: bold;
+                background-color: rgb(60, 105, 173);
             }
             .top-right{
                 text-align: right;
@@ -46,18 +63,22 @@
     <body>
         <div class='title'>FPT University Academic Portal</div>
         <div class='top'>
-            <div>
-                
-            </div>
+            
+            <div class="top-left">
+                    <a class="header">Home</a>
+                </div>
+            
             <div class='top-right'>
                 <a class="header">${requestScope.account.username}</a> |
-                <a class="header" href="logout">Log out</a>
+                <a class="header" href="../logout">Log out</a>
             </div>
+                
+                
             
         </div>
-        <a href="lecturer/timetable">Schedule</a> <br/>
+        <a href="timetable">Timetable</a> <br/>
         
-        <a href="lecturer/attstatus">Attendance Status</a>
+        <a href="attstatus">Attendance Status</a>
         
         
         

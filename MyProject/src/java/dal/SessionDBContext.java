@@ -25,8 +25,10 @@ import model.TimeSlot;
  * @author Ngo Tung Son
  */
 public class SessionDBContext extends dal.DBContext<Session> {
+
     
-    public ArrayList<Session> getSessionFromGroup(int gid){
+
+    public ArrayList<Session> getSessionFromGroup(int gid) {
         ArrayList<Session> sessions = new ArrayList<>();
         try {
             String sql = "SELECT  \n"
@@ -46,43 +48,42 @@ public class SessionDBContext extends dal.DBContext<Session> {
                     + "ses.gid = ?\n";
             PreparedStatement stm = connection.prepareStatement(sql);
             stm.setInt(1, gid);
-            
+
             ResultSet rs = stm.executeQuery();
-            while(rs.next())
-            {
+            while (rs.next()) {
                 Session session = new Session();
                 Lecturer l = new Lecturer();
                 Room r = new Room();
                 Group g = new Group();
                 TimeSlot t = new TimeSlot();
                 Subject sub = new Subject();
-                
+
                 session.setId(rs.getInt("sesid"));
                 session.setDate(rs.getDate("date"));
                 session.setIndex(rs.getInt("index"));
                 session.setAttandated(rs.getBoolean("attanded"));
-                
+
                 l.setId(rs.getInt("lid"));
                 l.setName(rs.getString("lname"));
                 session.setLecturer(l);
-                
+
                 g.setId(rs.getInt("gid"));
                 g.setName(rs.getString("gname"));
                 session.setGroup(g);
-                
+
                 sub.setId(rs.getInt("subid"));
                 sub.setName(rs.getString("subname"));
                 sub.setNumberOfSession(rs.getInt("numberOfSession"));
                 g.setSubject(sub);
-                
+
                 r.setId(rs.getInt("rid"));
                 r.setName(rs.getString("rname"));
                 session.setRoom(r);
-                
+
                 t.setId(rs.getInt("tid"));
                 t.setDescription(rs.getString("description"));
                 session.setTimeslot(t);
-                
+
                 sessions.add(session);
             }
         } catch (SQLException ex) {
@@ -116,41 +117,40 @@ public class SessionDBContext extends dal.DBContext<Session> {
             stm.setDate(2, from);
             stm.setDate(3, to);
             ResultSet rs = stm.executeQuery();
-            while(rs.next())
-            {
+            while (rs.next()) {
                 Session session = new Session();
                 Lecturer l = new Lecturer();
                 Room r = new Room();
                 Group g = new Group();
                 TimeSlot t = new TimeSlot();
                 Subject sub = new Subject();
-                
+
                 session.setId(rs.getInt("sesid"));
                 session.setDate(rs.getDate("date"));
                 session.setIndex(rs.getInt("index"));
                 session.setAttandated(rs.getBoolean("attanded"));
-                
+
                 l.setId(rs.getInt("lid"));
                 l.setName(rs.getString("lname"));
                 session.setLecturer(l);
-                
+
                 g.setId(rs.getInt("gid"));
                 g.setName(rs.getString("gname"));
                 session.setGroup(g);
-                
+
                 sub.setId(rs.getInt("subid"));
                 sub.setName(rs.getString("subname"));
                 sub.setNumberOfSession(rs.getInt("numberOfSession"));
                 g.setSubject(sub);
-                
+
                 r.setId(rs.getInt("rid"));
                 r.setName(rs.getString("rname"));
                 session.setRoom(r);
-                
+
                 t.setId(rs.getInt("tid"));
                 t.setDescription(rs.getString("description"));
                 session.setTimeslot(t);
-                
+
                 sessions.add(session);
             }
         } catch (SQLException ex) {

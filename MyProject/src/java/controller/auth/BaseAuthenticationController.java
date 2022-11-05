@@ -32,7 +32,7 @@ public abstract class BaseAuthenticationController extends HttpServlet {
         else
         {
             resp.getWriter().println("Please login to access!");
-            resp.getWriter().println("<a href=\"login\">login</a>");
+            resp.getWriter().println("<a href=\"../login\">login</a>");
         }
     }
     protected abstract void processPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException;
@@ -47,7 +47,7 @@ public abstract class BaseAuthenticationController extends HttpServlet {
         else
         {
             resp.getWriter().println("<div>Please login to access!</div>");
-            resp.getWriter().println("<a href=\"login\">login</a>");
+            resp.getWriter().println("<a href=\"../login\">login</a>");
         }
     }
     

@@ -59,6 +59,7 @@ public class AttController extends BaseRoleController {
         Date today = new Date();
         java.sql.Date today_sql = DateTimeHelper.toDateSql(today);
         
+        req.setAttribute("username", account.getUsername());
         req.setAttribute("today", today_sql);
         req.setAttribute("ses", ses);
         req.getRequestDispatcher("../view/lecturer/checkattendance.jsp").forward(req, resp);

@@ -15,16 +15,44 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
         <link rel="stylesheet" href="../css/checkattendance.css"/>
+        <style>
+            a{
+                text-decoration: none;
+            }
+            .top-left{
+                text-align: left;
+            }
+            .top-left a{
+                margin: 2px 5px;
+                border-radius: 5px;
+                padding: 2px 4px;
+                font-weight: bold;
+                background-color: rgb(60, 105, 173);
+            }
+            .present{
+                color: Green;
+            }
+
+            .absent{
+                color: red;
+            }
+
+            td{
+                padding: 0px 5px;
+            }
+        </style>
     </head>
     <body>
         <div class='title'>Attandance Report</div>
         <div class='top'>
-            <div>
-
+            <div class="top-left">
+                <a class="header" href="home">Home</a> |
+                <a class="header" href="timetable">Timetable</a> |
+                <a class="header">Attandance Report</a>
             </div>
             <div class='top-right'>
-                <a class="header">${requestScope.ses.lecturer.name}</a> |
-                <a class="header" href="logout">Log out</a>
+                <a class="header">${requestScope.username}</a> |
+                <a class="header" href="../logout">Log out</a>
             </div>
 
         </div>
@@ -71,20 +99,33 @@
                                        </c:if>
                                        name="present${a.student.id}" value="absent" /></td>
                             </c:if>
-                            <c:if test="${helper.compare(requestScope.ses.date,requestScope.today) ne 0}">
-                            <td>
+                            <c:if test="${helper.compare(requestScope.ses.date,requestScope.today) lt 0}">
+                                <c:if test="${!requestScope.ses.attandated}">
+                                <td class="absent">Not yet</td>
+                            </c:if>
+
+                            <c:if test="${requestScope.ses.attandated}">
+
+
                                 <c:if test="${a.present}">
-                                    Present
+                                    <td class="present"> Present </td>
                                 </c:if>
                                 <c:if test="${!a.present}">
-                                    Absent
+                                    <td class="absent"> Absent </td>
                                 </c:if>
-                            </td>
+
+                            </c:if>
+
+                        </c:if>
+                        <c:if test="${helper.compare(requestScope.ses.date,requestScope.today) gt 0}">
+
+                            <td class="absent">Not yet</td>
+
                         </c:if>
                         <c:if test="${helper.compare(requestScope.ses.date,requestScope.today) eq 0}">
                             <td class="description"><input type="text" name="description${a.student.id}" value="${a.description}" /></td>
-                        </c:if>
-                        <c:if test="${helper.compare(requestScope.ses.date,requestScope.today) ne 0}">
+                            </c:if>
+                            <c:if test="${helper.compare(requestScope.ses.date,requestScope.today) ne 0}">
                             <td class="description">${a.description}</td>
                         </c:if>
                     </tr>   
@@ -94,7 +135,7 @@
             </table>
             <input  <c:if test="${helper.compare(requestScope.ses.date,requestScope.today) ne 0}">
                     hidden
-            </c:if>
+                </c:if>
                 type="submit" value="Save"/>
         </form>
     </body>
