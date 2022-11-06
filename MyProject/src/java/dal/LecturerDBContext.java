@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import model.Account;
 import model.Lecturer;
 
 /**
@@ -77,6 +78,30 @@ public class LecturerDBContext extends dal.DBContext<Lecturer> {
     @Override
     public ArrayList<Lecturer> list() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public ArrayList<Lecturer> getListUsername() {
+        ArrayList<Lecturer> lecs = new ArrayList<>();
+        try {
+            String sql = "SELECT L.lid, lname\n"
+                    + "		,username\n"
+                    + "	FROM Lecturer L \n"
+                    + "		INNER JOIN Lecture_Account LA ON L.lid = LA.lid";
+            PreparedStatement stm = connection.prepareStatement(sql);
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {
+                Lecturer l = new Lecturer();
+                l.setId(rs.getInt("lid"));
+                l.setName(rs.getString("lname"));
+                Account account = new Account();
+                account.setUsername(rs.getString("username"));
+                l.setAccount(account);
+                lecs.add(l);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(LecturerDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return lecs;
     }
 
 }

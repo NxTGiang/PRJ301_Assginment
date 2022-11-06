@@ -16,7 +16,18 @@ public class Lecturer {
     private String imageURL;
     private ArrayList<Group> groups = new ArrayList<>();
     private ArrayList<Session> sessions = new ArrayList<>();
+    private Account account;
 
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
+    }
+    
+    
+    
     public String getImageURL() {
         return imageURL;
     }
