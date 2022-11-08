@@ -40,6 +40,8 @@ public abstract class BaseRoleController extends BaseAuthenticationController {
         }
         else
         {
+            req.getSession().setAttribute("account", null);
+            req.getSession().setAttribute("errmsg", "You don't have permission to access this page");
             resp.sendRedirect("../login");
         }
     }
@@ -54,6 +56,8 @@ public abstract class BaseRoleController extends BaseAuthenticationController {
         }
         else
         {
+            req.getSession().setAttribute("account", null);
+            req.getSession().setAttribute("errmsg", "You don't have permission to access this page");
             resp.sendRedirect("../login");
         }
     }

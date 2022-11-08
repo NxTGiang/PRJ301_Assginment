@@ -43,20 +43,26 @@
             </div>
 
         </div>
-        <form action="attstatus"  method="GET">
+        <c:if test="${requestScope.groups.size() == 0}">
+            <div style="color: red;">*No Group to view</div>
+        </c:if>
+        <c:if test="${requestScope.groups.size() != 0}">
 
-            <select name="gid">
-                <c:forEach items="${requestScope.groups}" var="group">
-                    <option
-                        <c:if test="${requestScope.group.id eq group.id}">
-                            selected="selected"
-                        </c:if>
-                        value="${group.id}">${group.name}</option>
-                </c:forEach>
+            <form action="attstatus"  method="GET">
 
-            </select>
-            <input type="submit" value="View"/>
-        </form>
+                <select name="gid">
+                    <c:forEach items="${requestScope.groups}" var="group">
+                        <option
+                            <c:if test="${requestScope.group.id eq group.id}">
+                                selected="selected"
+                            </c:if>
+                            value="${group.id}">${group.name}</option>
+                    </c:forEach>
+
+                </select>
+                <input type="submit" value="View"/>
+            </form>
+        </c:if>
         <c:if   test="${param.gid ne null}">
             <%! int numSession;%>
             <table>

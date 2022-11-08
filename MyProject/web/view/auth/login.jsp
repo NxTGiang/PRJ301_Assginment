@@ -47,8 +47,11 @@
                                             <span class="checkmark"></span>
                                         </label>
                                     </div>
+                                    <br>
+                                   
 
                                 </div>
+                                           <div style='text-align: center; color: red;'>${requestScope.errmsg}</div>
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-primary rounded submit p-3 px-5">Get Started</button>
                                 </div>

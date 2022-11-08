@@ -44,6 +44,7 @@ public class AttController extends BaseRoleController {
             a.setDescription(req.getParameter("description"+stdid));
             a.setPresent(req.getParameter("present"+stdid).equals("present"));
             s.setId(Integer.parseInt(stdid));
+            a.setTaker(account.getUsername());
             ses.getAttandances().add(a);
         }
         SessionDBContext db = new SessionDBContext();

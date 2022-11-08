@@ -4,6 +4,7 @@
     Author     : admin
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -62,25 +63,27 @@
     </head>
     <body>
         <div class='title'>FPT University Academic Portal</div>
+       
+            
         <div class='top'>
-            
+
             <div class="top-left">
-                    <a class="header">Home</a>
-                </div>
-            
+                <a class="header">Home</a>
+            </div>
+
             <div class='top-right'>
                 <a class="header">${requestScope.account.username}</a> |
                 <a class="header" href="../logout">Log out</a>
             </div>
-                
-                
-            
+
+
+
         </div>
         <a href="timetable">Timetable</a> <br/>
-        
+
         <a href="attstatus">Attendance Status</a>
-        
-        
-        
+
+
+
     </body>
 </html>

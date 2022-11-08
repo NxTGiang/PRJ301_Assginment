@@ -60,6 +60,7 @@ public class EditAttController extends BaseRoleController {
                 }
             }
         }
+        req.setAttribute("role", "admin");
         req.getRequestDispatcher("../view/admin/editatts.jsp").forward(req, resp);
     }
 
@@ -75,6 +76,7 @@ public class EditAttController extends BaseRoleController {
             a.setDescription(req.getParameter("description"+stdid));
             a.setPresent(req.getParameter("present"+stdid).equals("present"));
             s.setId(Integer.parseInt(stdid));
+            a.setTaker(account.getUsername());
             ses.getAttandances().add(a);
         }
         SessionDBContext db = new SessionDBContext();

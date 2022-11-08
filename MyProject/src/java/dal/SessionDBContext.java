@@ -26,8 +26,6 @@ import model.TimeSlot;
  */
 public class SessionDBContext extends dal.DBContext<Session> {
 
-    
-
     public ArrayList<Session> getSessionFromGroup(int gid) {
         ArrayList<Session> sessions = new ArrayList<>();
         try {
@@ -186,9 +184,11 @@ public class SessionDBContext extends dal.DBContext<Session> {
                         + "           ,[stdid]\n"
                         + "           ,[present]\n"
                         + "           ,[description]\n"
+                        + "           ,[taker]\n"
                         + "           ,[record_time])\n"
                         + "     VALUES\n"
                         + "           (?\n"
+                        + "           ,?\n"
                         + "           ,?\n"
                         + "           ,?\n"
                         + "           ,?\n"
@@ -198,6 +198,7 @@ public class SessionDBContext extends dal.DBContext<Session> {
                 stm_insert.setInt(2, att.getStudent().getId());
                 stm_insert.setBoolean(3, att.isPresent());
                 stm_insert.setString(4, att.getDescription());
+                stm_insert.setString(5, att.getTaker());
                 stm_insert.executeUpdate();
             }
             connection.commit();
@@ -234,6 +235,7 @@ public class SessionDBContext extends dal.DBContext<Session> {
                     + "	,sub.subid,sub.subname\n"
                     + "	,s.stdid,s.stdname,s.imgURL\n"
                     + "	,ISNULL(a.present,0) present, ISNULL(a.[description],'') [description]\n"
+                    + " ,ISNULL(a.taker,'') taker, ISNULL(a.record_time, '') record_time\n"
                     + "		FROM [Session] ses\n"
                     + "		INNER JOIN Room r ON r.rid = ses.rid\n"
                     + "		INNER JOIN TimeSlot t ON t.tid = ses.tid\n"
@@ -291,6 +293,8 @@ public class SessionDBContext extends dal.DBContext<Session> {
                 a.setSession(ses);
                 a.setPresent(rs.getBoolean("present"));
                 a.setDescription(rs.getString("description"));
+                a.setTaker(rs.getString("taker"));
+                a.setRecord_time(rs.getTimestamp("record_time"));
                 ses.getAttandances().add(a);
             }
             return ses;

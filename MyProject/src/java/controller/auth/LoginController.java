@@ -34,13 +34,17 @@ public class LoginController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String errmsg = (String) request.getSession().getAttribute("errmsg");
+        request.setAttribute("errmsg", errmsg);
         Cookie arr[] = request.getCookies();
-        if (arr != null){
+        if (arr != null) {
             for (Cookie c : arr) {
-                if (c.getName().equals("u"))
+                if (c.getName().equals("u")) {
                     request.setAttribute("user", c.getValue());
-                if (c.getName().equals("p"))
+                }
+                if (c.getName().equals("p")) {
                     request.setAttribute("pass", c.getValue());
+                }
             }
         }
         request.getRequestDispatcher("view/auth/login.jsp").forward(request, response);
@@ -63,38 +67,44 @@ public class LoginController extends HttpServlet {
         AccountDBContext db = new AccountDBContext();
         Account account = db.get(username, password);
         if (account == null) {
-            response.sendRedirect("login");
+            request.setAttribute("errmsg", "Username or Password is incorrect");
+            request.getRequestDispatcher("view/auth/login.jsp").forward(request, response);
         } else {
             request.getSession().setAttribute("account", account);
-            
+
             Cookie u = new Cookie("u", username);
             Cookie p = new Cookie("p", password);
-            u.setMaxAge(60*30);
-            
-            if (remember == null || remember.length() == 0){
+            u.setMaxAge(60 * 30);
+
+            if (remember == null || remember.length() == 0) {
                 p.setMaxAge(0);
-            } else
-                p.setMaxAge(60*30);
-            
+            } else {
+                p.setMaxAge(60 * 30);
+            }
+
             response.addCookie(u);
             response.addCookie(p);
-            
+
             ArrayList<Role> roles = account.getRoles();
-            for (Role role : roles) {
-                if(role.getRoleId() == 3){
-                    response.sendRedirect("student/timetable");
+            if (roles.size() == 1) {
+                for (Role role : roles) {
+                    if (role.getRoleId() == 3) {
+                        response.sendRedirect("student/timetable");
+                    }
+                    if (role.getRoleId() == 2) {
+                        response.sendRedirect("lecturer/home");
+                    }
+                    if (role.getRoleId() == 1) {
+                        response.sendRedirect("admin/editatts");
+                    }
                 }
-                if (role.getRoleId() == 2){
-                    response.sendRedirect("lecturer/home");
-                }
-                if (role.getRoleId() == 1){
-                    response.sendRedirect("admin/editatts");
-                }
+            } else {
+                request.getRequestDispatcher("view/auth/chooserole.jsp").forward(request, response);
             }
             
-            
+
         }
-        
+
     }
 
     /**

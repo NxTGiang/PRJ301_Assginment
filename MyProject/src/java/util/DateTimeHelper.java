@@ -19,7 +19,7 @@ public class DateTimeHelper {
     public static Date toDate(String value, String format) throws ParseException {
         return new SimpleDateFormat(format).parse(value);
     }
-
+    
     public static Date removeTime(Date date) {
         Calendar cal = Calendar.getInstance();
         cal.setTime(date);

@@ -77,6 +77,8 @@
                         <td>Status</td>
                     </c:if>
                     <td>Description</td>
+                    <td>Taker</td>
+                    <td>Record time</td>
                 </tr>
                 <c:forEach items="${requestScope.ses.attandances}" var="a" varStatus="loop">
                     <tr>
@@ -128,6 +130,14 @@
                             <c:if test="${helper.compare(requestScope.ses.date,requestScope.today) ne 0}">
                             <td class="description">${a.description}</td>
                         </c:if>
+                            <td class="taker">${a.taker}</td>
+                            <c:if test="${requestScope.ses.attandated}">
+                                <td class="record_time">${a.record_time}</td>
+                            </c:if>
+                            <c:if test="${!requestScope.ses.attandated}">
+                                <td></td>
+                            </c:if>
+                            
                     </tr>   
 
                 </c:forEach>

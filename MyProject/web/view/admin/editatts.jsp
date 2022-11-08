@@ -88,17 +88,17 @@
                 overflow: auto;
             }
             .left{
-                width: 20%;
+                width: 15%;
                 float: left;
             }
             .mid{
-                margin-top: 24px;
-                width: 30%;
+                margin-top: 40px;
+                width: 20%;
                 float: left;
             }
             .right{
-                margin-top: 24px;
-                width: 50%;
+                margin-top: 45px;
+                width: 60%;
                 float: right;
             }
         </style>
@@ -120,7 +120,9 @@
                     <span>Lecturer: </span>
                     <select name="lid">
                         <c:forEach items="${requestScope.lecs}" var="lec">
-                            <option value="${lec.id}">
+                            <option value="${lec.id}" <c:if test="${param.lid eq lec.id}">
+                                    selected="selected"
+                            </c:if>>
                                 ${lec.account.username}
                             </option>
                         </c:forEach>
@@ -179,19 +181,15 @@
                                     <td>Absent</td>
                                 </c:if>
                                 <c:if test="${helper.compare(requestScope.ses.date,requestScope.today) eq 0}">
-                                    <c:if test="${requestScope.ses.attandated}">
-                                        <td>Present</td>
-                                        <td>Absent</td>
-                                    </c:if>
-                                    <c:if test="${!requestScope.ses.attandated}">
-                                        <td>Status</td>
-                                    </c:if>
+                                    <td>Status</td>
 
                                 </c:if>
                                 <c:if test="${helper.compare(requestScope.ses.date,requestScope.today) gt 0}">
                                     <td>Status</td>
                                 </c:if>
                                 <td>Description</td>
+                                <td>Taker</td>
+                                <td>Record time</td>
                             </tr>
                             <c:forEach items="${requestScope.ses.attandances}" var="a" varStatus="loop">
                                 <tr>
@@ -242,6 +240,13 @@
 
                                         <td class="description">${a.description}</td>
                                     </c:if>
+                                        <td>${a.taker}</td>
+                                        <c:if test="${requestScope.ses.attandated}">
+                                            <td>${a.record_time}</td>
+                                        </c:if>
+                                        <c:if test="${!requestScope.ses.attandated}">
+                                            <td></td>
+                                        </c:if>
                                 </tr>   
 
                             </c:forEach>

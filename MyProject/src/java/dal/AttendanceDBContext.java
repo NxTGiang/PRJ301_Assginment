@@ -46,7 +46,7 @@ public class AttendanceDBContext extends DBContext<Attandance> {
                     + "                    			INNER JOIN [Subject] sub ON sub.subid = g.subid\n"
                     + "                    			INNER JOIN Room r ON r.rid = ses.rid\n"
                     + "                    			INNER JOIN TimeSlot t ON t.tid = ses.tid\n"
-                    + "								LEFT JOIN Attandance A ON A.sesid = SES.sesid AND A.stdid = S.stdid\n"
+                    + "						LEFT JOIN Attandance A ON A.sesid = SES.sesid AND A.stdid = S.stdid\n"
                     + "                    WHERE\n"
                     + "                    S.stdid = ?\n"
                     + "                    AND ses.[date] >= ?\n"
