@@ -26,6 +26,25 @@ import model.TimeSlot;
  * @author Ngo Tung Son
  */
 public class SessionDBContext extends dal.DBContext<Session> {
+    
+    public ArrayList<Session> getListSession(int lid){
+        ArrayList<Session> sess = new ArrayList<>();
+        try {
+            String sql = "SELECT * FROM [Session] WHERE lid = ?";
+            PreparedStatement stm = connection.prepareStatement(sql);
+            stm.setInt(1, lid);
+
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {
+                Session s = new Session();
+                s.setId(rs.getInt("sesid"));
+                sess.add(s);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(SessionDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return sess;
+    }
 
     public Session get(int sesid, int stdid) {
         try {

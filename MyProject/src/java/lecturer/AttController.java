@@ -6,6 +6,7 @@
 package lecturer;
 
 import controller.auth.BaseRoleController;
+import dal.LecturerDBContext;
 import dal.SessionDBContext;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -13,9 +14,11 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
 import java.util.Date;
 import model.Account;
 import model.Attandance;
+import model.Lecturer;
 import model.Session;
 import model.Student;
 import util.DateTimeHelper;
@@ -55,7 +58,18 @@ public class AttController extends BaseRoleController {
     @Override
     protected void processGet(HttpServletRequest req, HttpServletResponse resp, Account account) throws ServletException, IOException {
         int sesid = Integer.parseInt(req.getParameter("id"));
+        LecturerDBContext ldb = new LecturerDBContext();
+        Lecturer l = ldb.getLecture(account.getUsername());
+        int lid = l.getId();
         SessionDBContext sesDB = new SessionDBContext();
+        boolean hasPermission = false;
+        ArrayList<Session> sess = sesDB.getListSession(lid);
+        for (Session ses : sess) {
+            if (ses.getId() == sesid)
+                hasPermission = true;
+        }
+        
+        if (hasPermission){
         Session ses = sesDB.get(sesid);
         Date today = new Date();
         java.sql.Date today_sql = DateTimeHelper.toDateSql(today);
@@ -64,6 +78,11 @@ public class AttController extends BaseRoleController {
         req.setAttribute("today", today_sql);
         req.setAttribute("ses", ses);
         req.getRequestDispatcher("../view/lecturer/checkattendance.jsp").forward(req, resp);
+        } else {
+            req.getSession().setAttribute("account", null);
+            req.getSession().setAttribute("errmsg", "You don't have permission to access this page");
+            resp.sendRedirect("../login");
+        }
     }
 
 }
