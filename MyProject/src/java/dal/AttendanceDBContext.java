@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import model.Account;
 import model.Attandance;
 import model.Group;
 import model.Lecturer;
@@ -25,6 +26,70 @@ import model.TimeSlot;
  * @author admin
  */
 public class AttendanceDBContext extends DBContext<Attandance> {
+
+    public Attandance get(int sesid, int stdid) {
+        try {
+            String sql = "SELECT A.sesid, A.stdid,ISNULL(A.present, 0) present, \n"
+                    + "			ISNULL(A.taker, '') taker, ISNULL(A.[description], '') [description]\n"
+                    + "			, ISNULL(A.record_time, '')record_time\n"
+                    + "		,S.[date], S.gid, S.attanded, S.lid, S.tid\n"
+                    + "		,G.gname ,G.subid\n"
+                    + "		,SUB.subname, SUB.numberOfSession, SUB.[name]\n"
+                    + "		,L.lname, LA.username\n"
+                    + "	FROM Attandance A \n"
+                    + "		INNER JOIN [Session] S ON S.sesid = A.sesid\n"
+                    + "		INNER JOIN [Group] G ON S.gid = G.gid\n"
+                    + "		INNER JOIN [Subject] SUB ON SUB.subid = G.subid\n"
+                    + "		INNER JOIN Lecturer L ON L.lid = S.lid\n"
+                    + "		INNER JOIN Lecture_Account LA ON L.lid = LA.lid\n"
+                    + "		WHERE A.sesid = ? AND A.stdid = ?";
+            PreparedStatement stm = connection.prepareStatement(sql);
+            stm.setInt(1, sesid);
+            stm.setInt(2, stdid);
+            ResultSet rs = stm.executeQuery();
+            if (rs.next()) {
+                Attandance a = new Attandance();
+                a.setDescription(rs.getString("description"));
+                a.setPresent(rs.getBoolean("present"));
+                a.setRecord_time(rs.getTimestamp("record_time"));
+                a.setTaker(rs.getString("taker"));
+                
+                Session s = new Session();
+                s.setAttandated(rs.getBoolean("attanded"));
+                s.setDate(rs.getDate("date"));
+                a.setSession(s);
+                
+                Group g = new Group();
+                g.setId(rs.getInt("gid"));
+                g.setName(rs.getString("gname"));
+                s.setGroup(g);
+                
+                Subject sub = new Subject();
+                sub.setId(rs.getInt("subid"));
+                sub.setName(rs.getString("subname"));
+                sub.setDetailname(rs.getString("name"));
+                sub.setNumberOfSession(rs.getInt("numberOfSession"));
+                g.setSubject(sub);
+                
+                Lecturer l = new Lecturer();
+                l.setId(rs.getInt("lid"));
+                l.setName(rs.getString("lname"));
+                Account acc = new Account();
+                acc.setUsername(rs.getString("username"));
+                l.setAccount(acc);
+                s.setLecturer(l);
+                
+                TimeSlot t = new TimeSlot();
+                t.setId(rs.getInt("tid"));
+                s.setTimeslot(t);
+                
+                return a;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(SessionDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
 
     public ArrayList<Attandance> filterStudent(int stdid, Date from, Date to) {
         ArrayList<Attandance> atts = new ArrayList<>();

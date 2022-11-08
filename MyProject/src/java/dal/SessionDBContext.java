@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import model.Account;
 import model.Attandance;
 import model.Group;
 import model.Lecturer;
@@ -25,6 +26,85 @@ import model.TimeSlot;
  * @author Ngo Tung Son
  */
 public class SessionDBContext extends dal.DBContext<Session> {
+
+    public Session get(int sesid, int stdid) {
+        try {
+            String sql = "SELECT ses.sesid,ses.[index],ses.date,ses.attanded\n"
+                    + "                    	,g.gid,g.gname\n"
+                    + "                    	,r.rid,r.rname\n"
+                    + "                    	,t.tid,t.[description] tdescription\n"
+                    + "                    	,l.lid,l.lname, LA.username\n"
+                    + "                    	,sub.subid,sub.subname, sub.numberOfSession, sub.[name]\n"
+                    + "                    	,ISNULL(a.present,0) present, ISNULL(a.[description],'') [description]\n"
+                    + "                     ,ISNULL(a.taker,'') taker, ISNULL(a.record_time, '') record_time\n"
+                    + "                    		FROM [Session] ses\n"
+                    + "                    		INNER JOIN Room r ON r.rid = ses.rid\n"
+                    + "                    		INNER JOIN TimeSlot t ON t.tid = ses.tid\n"
+                    + "                   		INNER JOIN Lecturer l ON l.lid = ses.lid\n"
+                    + "						INNER JOIN Lecture_Account LA ON LA.lid = L.lid\n"
+                    + "                   		INNER JOIN [Group] g ON g.gid = ses.gid\n"
+                    + "                    	INNER JOIN [Subject] sub ON sub.subid = g.subid\n"
+                    + "                    		INNER JOIN [Student_Group] sg ON sg.gid = g.gid\n"
+                    + "                    		INNER JOIN [Student] s ON s.stdid = sg.stdid\n"
+                    + "                    		LEFT JOIN Attandance a ON s.stdid = a.stdid AND ses.sesid = a.sesid\n"
+                    + "                    WHERE ses.sesid = ? AND S.stdid = ?";
+            PreparedStatement stm = connection.prepareStatement(sql);
+            stm.setInt(1, sesid);
+            stm.setInt(2, stdid);
+            ResultSet rs = stm.executeQuery();
+            if (rs.next()) {
+                Session ses = new Session();
+                    ses = new Session();
+                    Room r = new Room();
+                    r.setId(rs.getInt("rid"));
+                    r.setName(rs.getString("rname"));
+                    ses.setRoom(r);
+
+                    TimeSlot t = new TimeSlot();
+                    t.setId(rs.getInt("tid"));
+                    t.setDescription(rs.getString("tdescription"));
+                    ses.setTimeslot(t);
+
+                    Lecturer l = new Lecturer();
+                    l.setId(rs.getInt("lid"));
+                    l.setName(rs.getString("lname"));
+                    Account acc = new Account();
+                    acc.setUsername(rs.getString("username"));
+                    l.setAccount(acc);
+                    ses.setLecturer(l);
+
+                    Group g = new Group();
+                    g.setId(rs.getInt("gid"));
+                    g.setName(rs.getString("gname"));
+                    ses.setGroup(g);
+
+                    Subject sub = new Subject();
+                    sub.setId(rs.getInt("subid"));
+                    sub.setName(rs.getString("subname"));
+                    sub.setDetailname(rs.getString("name"));
+                    sub.setNumberOfSession(rs.getInt("numberOfSession"));
+                    g.setSubject(sub);
+
+                    ses.setDate(rs.getDate("date"));
+                    ses.setIndex(rs.getInt("index"));
+                    ses.setAttandated(rs.getBoolean("attanded"));
+
+                //read attandance
+                Attandance a = new Attandance();
+                a.setSession(ses);
+                a.setPresent(rs.getBoolean("present"));
+                a.setDescription(rs.getString("description"));
+                a.setTaker(rs.getString("taker"));
+                a.setRecord_time(rs.getTimestamp("record_time"));
+                ses.getAttandances().add(a);
+                return ses;
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(SessionDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
 
     public ArrayList<Session> getSessionFromGroup(int gid) {
         ArrayList<Session> sessions = new ArrayList<>();

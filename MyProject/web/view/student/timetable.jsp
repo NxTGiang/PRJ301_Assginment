@@ -90,7 +90,7 @@
                         <td>
                             <c:forEach items="${requestScope.atts}" var="att">
                                 <c:if test="${helper.compare(att.session.date,d) eq 0 and (att.session.timeslot.id eq slot.id)}">
-                                    <a class="subject" href="#">${att.session.group.subject.name}</a>
+                                    <a class="subject" href="activitydetails?sesid=${att.session.id}">${att.session.group.subject.name}</a>
                                     <br/>
                                     <div>at ${att.session.room.name} </div>
                                     <c:if test="${att.session.attandated}">

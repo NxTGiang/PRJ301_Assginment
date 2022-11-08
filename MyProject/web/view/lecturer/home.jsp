@@ -52,9 +52,7 @@
                 font-weight: bold;
                 background-color: rgb(60, 105, 173);
             }
-            h1{
-                color: #333333;
-            }
+            
             .title{
                 font-size: 40px;
                 margin-bottom: 15px;

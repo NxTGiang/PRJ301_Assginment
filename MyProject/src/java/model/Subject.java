@@ -15,6 +15,17 @@ public class Subject {
     private String name;
     private int numberOfSession;
     private ArrayList<Group> groups = new ArrayList<>();
+    private String detailname;
+
+    public String getDetailname() {
+        return detailname;
+    }
+
+    public void setDetailname(String detailname) {
+        this.detailname = detailname;
+    }
+    
+    
 
     public int getId() {
         return id;
